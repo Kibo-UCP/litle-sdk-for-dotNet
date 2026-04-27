@@ -13,6 +13,7 @@
     <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
     <PackageReference Include="Moq" Version="4.20.72" />
+    <PackageReference Include="Mozu.Core.JunitTestLogger" Version="2.2616.2" />
   </ItemGroup>
 
   <ItemGroup>
