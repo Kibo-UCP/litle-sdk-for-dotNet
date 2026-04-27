@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using NUnit.Framework;
 using Litle.Sdk;
@@ -19,14 +20,14 @@ namespace Litle.Sdk.Test.Unit
         private const string timeRegex = "[0-1][0-9]-[0-3][0-9]-[0-9]{4}_[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{4}_";
         private const string batchNameRegex = timeRegex + "[A-Z]{8}";
         private const string mockFileName = "TheRainbow.xml";
-        private const string mockFilePath = "C:\\Somewhere\\Over\\" + mockFileName;
+        private static readonly string mockFilePath = Path.Combine("C:", "Somewhere", "Over", mockFileName);
 
         private Mock<litleTime> mockLitleTime;
         private Mock<litleFile> mockLitleFile;
         private Mock<Communications> mockCommunications;
         private Mock<XmlReader> mockXmlReader;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void setUp()
         {
             mockLitleTime = new Mock<litleTime>();
@@ -76,8 +77,8 @@ namespace Litle.Sdk.Test.Unit
 
             litle = new litleRequest(mockConfig);
 
-            Assert.AreEqual("C:\\MockRequests\\Requests\\", litle.getRequestDirectory());
-            Assert.AreEqual("C:\\MockResponses\\Responses\\", litle.getResponseDirectory());
+            Assert.AreEqual($"C:\\MockRequests{Path.DirectorySeparatorChar}Requests{Path.DirectorySeparatorChar}", litle.getRequestDirectory());
+            Assert.AreEqual($"C:\\MockResponses{Path.DirectorySeparatorChar}Responses{Path.DirectorySeparatorChar}", litle.getResponseDirectory());
 
             Assert.NotNull(litle.getCommunication());
             Assert.NotNull(litle.getLitleTime());

@@ -10,7 +10,7 @@ namespace Litle.Sdk.Test.Unit
     {
         private Communications _objectUnderTest;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void SetUpLitle()
         {
             _objectUnderTest = new Communications();

@@ -13,7 +13,7 @@ namespace Litle.Sdk.Test.Unit
     class TestXmlFieldsSerializer
     {
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void SetUpLitle()
         {
         }

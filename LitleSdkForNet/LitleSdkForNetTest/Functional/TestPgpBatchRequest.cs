@@ -15,7 +15,7 @@ namespace Litle.Sdk.Test.Functional
         private Dictionary<string, string> _config;
         
         
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void SetUp()
         {
             var pgpEnabled = Environment.GetEnvironmentVariable("pgpFunctionalTestsEnabled");

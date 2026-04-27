@@ -11,7 +11,7 @@ namespace Litle.Sdk.Test.Certification
     {
         private LitleOnline litle;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void setUp()
         {
             Dictionary<string, string> config = new Dictionary<string, string>();

@@ -11,7 +11,7 @@ namespace Litle.Sdk.Test.Functional
         private LitleOnline _litle;
         private Dictionary<string, string> _config;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void SetUpLitle()
         {
             _config = new Dictionary<string, string>

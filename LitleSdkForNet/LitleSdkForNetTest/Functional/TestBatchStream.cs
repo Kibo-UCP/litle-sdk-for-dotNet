@@ -14,7 +14,7 @@ namespace Litle.Sdk.Test.Functional
         private Dictionary<String, String> invalidConfig;
         private Dictionary<String, String> invalidSftpConfig;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void setUp()
         {
             invalidConfig = new Dictionary<String, String>();

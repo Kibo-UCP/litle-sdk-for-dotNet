@@ -18,7 +18,7 @@ namespace Litle.Sdk.Test.Functional
         private string _passphrase;
         private string _vantivPublicKeyId;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void SetUp()
         {
             var pgpEnabled = Environment.GetEnvironmentVariable("pgpFunctionalTestsEnabled");
