@@ -3,9 +3,9 @@ FROM 542216209467.dkr.ecr.us-east-1.amazonaws.com/kibo/base-images:dotnet-10-bui
 
 
 WORKDIR /src/LitleSdkForNet
-COPY ["LitleSdkForNet/**/*.csproj", "LitleSdkForNet/*.sln", "./"]
-
-RUN node -e "var fs=require('fs');fs.readdir(__dirname,function(err,files){files.filter((file)=>{return file.endsWith('.csproj')}).forEach((file)=>{var dir=file.substr(0,file.length-'.csproj'.length);var dest=dir+'/'+dir+'.csproj';if(!fs.existsSync(dir)){fs.mkdirSync(dir)}fs.rename(file,dest,console.log)})});"
+COPY ["LitleSdkForNet/LitleSdkForNet.sln", "./"]
+COPY ["LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj", "LitleSdkForNet/"]
+COPY ["LitleSdkForNet/LitleSdkForNetTest/LitleSdkForNetTest.csproj", "LitleSdkForNetTest/"]
 
 RUN dotnet restore  --source https://api.nuget.org/v3/index.json --source https://nexus.kibo-dev-ext.com/repository/nuget-localbuild/  LitleSdkForNet.sln
 WORKDIR /src

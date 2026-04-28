@@ -125,7 +125,9 @@ namespace Litle.Sdk
 
             var uri = config["url"];
 
+#pragma warning disable SYSLIB0014 // WebRequest is obsolete
             var req = (HttpWebRequest)WebRequest.Create(uri);
+#pragma warning restore SYSLIB0014
 
             var neuterAccNums = false;
             if (config.ContainsKey("neuterAccountNums"))
@@ -231,7 +233,9 @@ namespace Litle.Sdk
 
             var uri = config["url"];
 
+#pragma warning disable SYSLIB0014 // WebRequest is obsolete
             var req = (HttpWebRequest)WebRequest.Create(uri);
+#pragma warning restore SYSLIB0014
 
             var neuterAccNums = false;
             if (config.ContainsKey("neuterAccountNums"))
