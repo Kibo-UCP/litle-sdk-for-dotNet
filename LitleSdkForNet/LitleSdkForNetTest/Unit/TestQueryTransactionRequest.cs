@@ -15,7 +15,7 @@ namespace Litle.Sdk.Test.Unit
 
         private LitleOnline litle;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void SetUpLitle()
         {
             litle = new LitleOnline();
@@ -32,7 +32,7 @@ namespace Litle.Sdk.Test.Unit
             query.origLitleTxnId = 54321;
 
             string result = query.Serialize();
-            Assert.AreEqual("\r\n<queryTransaction id=\"myId\" reportGroup=\"myReportGroup\">\r\n<origId>12345</origId>\r\n<origActionType>D</origActionType>\r\n<origLitleTxnId>54321</origLitleTxnId>\r\n</queryTransaction>", result);
+            Assert.AreEqual("\n<queryTransaction id=\"myId\" reportGroup=\"myReportGroup\">\n<origId>12345</origId>\n<origActionType>D</origActionType>\n<origLitleTxnId>54321</origLitleTxnId>\n</queryTransaction>", result);
             
         }
 

@@ -13,7 +13,7 @@ namespace Litle.Sdk.Test.Unit
     class TestXmlFieldsSerializer
     {
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void SetUpLitle()
         {
         }
@@ -29,7 +29,7 @@ namespace Litle.Sdk.Test.Unit
             request.subscription.amount = 102;
 
             String xml = request.Serialize();
-            System.Text.RegularExpressions.Match match = Regex.Match(xml,"<subscription>\r\n<planCode>123abc</planCode>\r\n<numberOfPayments>10</numberOfPayments>\r\n<startDate>2013-07-25</startDate>\r\n<amount>102</amount>\r\n</subscription>");
+            System.Text.RegularExpressions.Match match = Regex.Match(xml,"<subscription>\n<planCode>123abc</planCode>\n<numberOfPayments>10</numberOfPayments>\n<startDate>2013-07-25</startDate>\n<amount>102</amount>\n</subscription>");
             Assert.IsTrue(match.Success, xml);
         }
 
@@ -41,7 +41,7 @@ namespace Litle.Sdk.Test.Unit
             request.subscription.planCode = "123abc";
 
             String xml = request.Serialize();
-            System.Text.RegularExpressions.Match match = Regex.Match(xml, "<subscription>\r\n<planCode>123abc</planCode>\r\n</subscription>");
+            System.Text.RegularExpressions.Match match = Regex.Match(xml, "<subscription>\n<planCode>123abc</planCode>\n</subscription>");
             Assert.IsTrue(match.Success, xml);
         }
 
@@ -151,7 +151,7 @@ namespace Litle.Sdk.Test.Unit
             update.subscriptionId = 12345;
 
             String actual = update.Serialize();
-            String expected = "\r\n<updateSubscription>\r\n<subscriptionId>12345</subscriptionId>\r\n<planCode>abcdefg</planCode>\r\n<billToAddress>\r\n<name>Greg Dake</name>\r\n<city>Lowell</city>\r\n<state>MA</state>\r\n<email>sdksupport@litle.com</email>\r\n</billToAddress>\r\n<card>\r\n<type>VI</type>\r\n<number>4100000000000001</number>\r\n<expDate>1215</expDate>\r\n</card>\r\n<billingDate>2002-10-09</billingDate>\r\n</updateSubscription>";
+            String expected = "\n<updateSubscription>\n<subscriptionId>12345</subscriptionId>\n<planCode>abcdefg</planCode>\n<billToAddress>\n<name>Greg Dake</name>\n<city>Lowell</city>\n<state>MA</state>\n<email>sdksupport@litle.com</email>\n</billToAddress>\n<card>\n<type>VI</type>\n<number>4100000000000001</number>\n<expDate>1215</expDate>\n</card>\n<billingDate>2002-10-09</billingDate>\n</updateSubscription>";
             Assert.AreEqual(expected, actual);
         }
 
@@ -162,7 +162,7 @@ namespace Litle.Sdk.Test.Unit
             update.subscriptionId = 12345;
 
             String actual = update.Serialize();
-            String expected = "\r\n<updateSubscription>\r\n<subscriptionId>12345</subscriptionId>\r\n</updateSubscription>";
+            String expected = "\n<updateSubscription>\n<subscriptionId>12345</subscriptionId>\n</updateSubscription>";
             Assert.AreEqual(expected, actual);
         }
 

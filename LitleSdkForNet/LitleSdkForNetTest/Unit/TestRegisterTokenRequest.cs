@@ -12,7 +12,7 @@ namespace Litle.Sdk.Test.Unit
         
         private LitleOnline _litle;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void SetUpLitle()
         {
             _litle = new LitleOnline();

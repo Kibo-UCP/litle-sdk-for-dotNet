@@ -15,7 +15,7 @@ namespace Litle.Sdk.Test.Unit
         
         private LitleOnline litle;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void SetUpLitle()
         {
             litle = new LitleOnline();
@@ -458,14 +458,8 @@ namespace Litle.Sdk.Test.Unit
 
             Communications mockedCommunication = mock.Object;
             litle.setCommunication(mockedCommunication);
-            try
-            {
-                litle.Authorize(authorization);
-            }
-            catch (LitleOnlineException e)
-            {
-                Assert.AreEqual("Error validating xml data against the schema", e.Message);
-            }
+            var ex = Assert.Throws<LitleOnlineException>(() => litle.Authorize(authorization));
+            Assert.AreEqual("Error validating xml data against the schema", ex.Message);
         }
 
         [Test]
@@ -489,14 +483,8 @@ namespace Litle.Sdk.Test.Unit
 
             Communications mockedCommunication = mock.Object;
             litle.setCommunication(mockedCommunication);
-            try
-            {
-                litle.Authorize(authorization);
-            }
-            catch (LitleOnlineException e)
-            {
-                Assert.AreEqual("Error validating xml data against the schema", e.Message);
-            }
+            var ex = Assert.Throws<LitleOnlineException>(() => litle.Authorize(authorization));
+            Assert.That(ex.Message, Does.Contain("not valid XML").Or.Contain("Error validating xml data"));
         }
 
         [Test]
@@ -524,10 +512,163 @@ namespace Litle.Sdk.Test.Unit
         }
 
         [Test]
-        public void TestSetMerchantSdk()
+        public void TestSendRequestThrowsOnNullResponseField()
         {
+            authorization authorization = new authorization();
+            authorization.reportGroup = "Planets";
+            authorization.orderId = "12344";
+            authorization.amount = 106;
+            authorization.orderSource = orderSourceType.ecommerce;
+            cardType card = new cardType();
+            card.type = methodOfPaymentTypeEnum.VI;
+            card.number = "4100000000000002";
+            card.expDate = "1210";
+            authorization.card = card;
 
+            var mock = new Mock<Communications>();
+            mock.Setup(Communications => Communications.HttpPost(It.IsAny<string>(), It.IsAny<Dictionary<String, String>>()))
+                .Returns("<litleOnlineResponse version='8.10' response='0' message='Valid Format' xmlns='http://www.litle.com/schema'><captureResponse><litleTxnId>123</litleTxnId></captureResponse></litleOnlineResponse>");
+
+            Communications mockedCommunication = mock.Object;
+            litle.setCommunication(mockedCommunication);
+
+            var ex = Assert.Throws<LitleOnlineException>(() => litle.Authorize(authorization));
+            Assert.That(ex.Message, Does.Contain("authorizationResponse"));
         }
-            
+
+        [Test]
+        public void TestNullResponseThrows()
+        {
+            authorization authorization = new authorization();
+            authorization.reportGroup = "Planets";
+            authorization.orderId = "12344";
+            authorization.amount = 106;
+            authorization.orderSource = orderSourceType.ecommerce;
+
+            var mock = new Mock<Communications>();
+            mock.Setup(Communications => Communications.HttpPost(It.IsAny<string>(), It.IsAny<Dictionary<String, String>>()))
+                .Returns((string)null);
+
+            Communications mockedCommunication = mock.Object;
+            litle.setCommunication(mockedCommunication);
+
+            var ex = Assert.Throws<LitleOnlineException>(() => litle.Authorize(authorization));
+            Assert.That(ex.Message, Does.Contain("empty or null"));
+        }
+
+        [Test]
+        public void TestEmptyResponseThrows()
+        {
+            authorization authorization = new authorization();
+            authorization.reportGroup = "Planets";
+            authorization.orderId = "12344";
+            authorization.amount = 106;
+            authorization.orderSource = orderSourceType.ecommerce;
+
+            var mock = new Mock<Communications>();
+            mock.Setup(Communications => Communications.HttpPost(It.IsAny<string>(), It.IsAny<Dictionary<String, String>>()))
+                .Returns("");
+
+            Communications mockedCommunication = mock.Object;
+            litle.setCommunication(mockedCommunication);
+
+            var ex = Assert.Throws<LitleOnlineException>(() => litle.Authorize(authorization));
+            Assert.That(ex.Message, Does.Contain("empty or null"));
+        }
+
+        [Test]
+        public void TestQueryTransactionThrowsOnUnexpectedResponse()
+        {
+            queryTransaction query = new queryTransaction();
+            query.id = "myId";
+            query.reportGroup = "Planets";
+            query.origId = "234";
+
+            var mock = new Mock<Communications>();
+            mock.Setup(Communications => Communications.HttpPost(It.IsAny<string>(), It.IsAny<Dictionary<String, String>>()))
+                .Returns("<litleOnlineResponse version='8.10' response='0' message='Valid Format' xmlns='http://www.litle.com/schema'><captureResponse><litleTxnId>123</litleTxnId></captureResponse></litleOnlineResponse>");
+
+            Communications mockedCommunication = mock.Object;
+            litle.setCommunication(mockedCommunication);
+
+            var ex = Assert.Throws<LitleOnlineException>(() => litle.queryTransaction(query));
+            Assert.That(ex.Message, Does.Contain("queryTransactionResponse"));
+        }
+
+        [Test]
+        public void TestResponseCodeTwoThrows()
+        {
+            authorization authorization = new authorization();
+            authorization.reportGroup = "Planets";
+            authorization.orderId = "12344";
+            authorization.amount = 106;
+            authorization.orderSource = orderSourceType.ecommerce;
+            cardType card = new cardType();
+            card.type = methodOfPaymentTypeEnum.VI;
+            card.number = "4100000000000002";
+            card.expDate = "1210";
+            authorization.card = card;
+
+            var mock = new Mock<Communications>();
+            mock.Setup(Communications => Communications.HttpPost(It.IsAny<string>(), It.IsAny<Dictionary<String, String>>()))
+                .Returns("<litleOnlineResponse version='8.10' response='2' message='System error' xmlns='http://www.litle.com/schema'><authorizationResponse><litleTxnId>123</litleTxnId></authorizationResponse></litleOnlineResponse>");
+
+            Communications mockedCommunication = mock.Object;
+            litle.setCommunication(mockedCommunication);
+
+            var ex = Assert.Throws<LitleOnlineException>(() => litle.Authorize(authorization));
+            Assert.AreEqual("System error", ex.Message);
+        }
+
+        [Test]
+        public void TestDeserializeResponseWithHtmlProxyError()
+        {
+            authorization authorization = new authorization();
+            authorization.reportGroup = "Planets";
+            authorization.orderId = "12344";
+            authorization.amount = 106;
+            authorization.orderSource = orderSourceType.ecommerce;
+            cardType card = new cardType();
+            card.type = methodOfPaymentTypeEnum.VI;
+            card.number = "4100000000000002";
+            card.expDate = "1210";
+            authorization.card = card;
+
+            var mock = new Mock<Communications>();
+            mock.Setup(Communications => Communications.HttpPost(It.IsAny<string>(), It.IsAny<Dictionary<String, String>>()))
+                .Returns("<html><body><h1>502 Bad Gateway</h1><p>The server is temporarily unavailable.</p></body></html>");
+
+            Communications mockedCommunication = mock.Object;
+            litle.setCommunication(mockedCommunication);
+
+            var ex = Assert.Throws<LitleOnlineException>(() => litle.Authorize(authorization));
+            Assert.That(ex.Message, Does.Contain("Error validating xml data against the schema").Or.Contain("not valid XML"));
+        }
+
+        [Test]
+        public void TestDeserializeResponseWithPlainTextProxyError()
+        {
+            authorization authorization = new authorization();
+            authorization.reportGroup = "Planets";
+            authorization.orderId = "12344";
+            authorization.amount = 106;
+            authorization.orderSource = orderSourceType.ecommerce;
+            cardType card = new cardType();
+            card.type = methodOfPaymentTypeEnum.VI;
+            card.number = "4100000000000002";
+            card.expDate = "1210";
+            authorization.card = card;
+
+            var mock = new Mock<Communications>();
+            mock.Setup(Communications => Communications.HttpPost(It.IsAny<string>(), It.IsAny<Dictionary<String, String>>()))
+                .Returns("502 Bad Gateway - The server is temporarily unavailable.");
+
+            Communications mockedCommunication = mock.Object;
+            litle.setCommunication(mockedCommunication);
+
+            var ex = Assert.Throws<LitleOnlineException>(() => litle.Authorize(authorization));
+            Assert.That(ex.Message, Does.Contain("not valid XML").Or.Contain("Error validating xml data against the schema"));
+        }
+
     }
 }

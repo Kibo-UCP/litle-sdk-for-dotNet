@@ -9,7 +9,7 @@ namespace Litle.Sdk.Test.Functional
     {
         private LitleOnline _litle;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void SetUp()
         {
             var config = new Dictionary<string, string>

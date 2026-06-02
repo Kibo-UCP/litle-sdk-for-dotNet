@@ -61,102 +61,6 @@ namespace Litle.Sdk.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("payments.vantivprelive.com")]
-        public string sftpUrl {
-            get {
-                return ((string)(this["sftpUrl"]));
-            }
-            set {
-                this["sftpUrl"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Vantiv\\dll\\knownhosts")]
-        public string knownHostsFile {
-            get {
-                return ((string)(this["knownHostsFile"]));
-            }
-            set {
-                this["knownHostsFile"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DotNet")]
-        public string sftpUsername {
-            get {
-                return ((string)(this["sftpUsername"]));
-            }
-            set {
-                this["sftpUsername"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DotNet")]
-        public string sftpPassword {
-            get {
-                return ((string)(this["sftpPassword"]));
-            }
-            set {
-                this["sftpPassword"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("payments.vantivprelive.com")]
-        public string onlineBatchUrl {
-            get {
-                return ((string)(this["onlineBatchUrl"]));
-            }
-            set {
-                this["onlineBatchUrl"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("15000")]
-        public string onlineBatchPort {
-            get {
-                return ((string)(this["onlineBatchPort"]));
-            }
-            set {
-                this["onlineBatchPort"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Vantiv\\")]
-        public string requestDirectory {
-            get {
-                return ((string)(this["requestDirectory"]));
-            }
-            set {
-                this["requestDirectory"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Vantiv\\")]
-        public string responseDirectory {
-            get {
-                return ((string)(this["responseDirectory"]));
-            }
-            set {
-                this["responseDirectory"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("null")]
         public string logFile {
             get {
@@ -181,7 +85,7 @@ namespace Litle.Sdk.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://www.testvantivcnp.com/sandbox/communicator/online")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.testvantivcnp.com/sandbox/new/sandbox/communicator/online")]
         public string url {
             get {
                 return ((string)(this["url"]));

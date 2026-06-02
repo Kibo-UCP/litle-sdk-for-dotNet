@@ -13,7 +13,7 @@ namespace Litle.Sdk.Test.Unit
         
         private LitleOnline _litle;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void SetUpLitle()
         {
             _litle = new LitleOnline();
@@ -76,7 +76,7 @@ namespace Litle.Sdk.Test.Unit
 
             var mock = new Mock<Communications>();
 
-            mock.Setup(communications => communications.HttpPost(It.IsRegex(".*<orderId>3</orderId>\r\n<amount>2</amount>\r\n<secondaryAmount>1</secondaryAmount>\r\n<orderSource>ecommerce</orderSource>.*", RegexOptions.Singleline), It.IsAny<Dictionary<String, String>>()))
+            mock.Setup(communications => communications.HttpPost(It.IsRegex(".*<orderId>3</orderId>\n<amount>2</amount>\n<secondaryAmount>1</secondaryAmount>\n<orderSource>ecommerce</orderSource>.*", RegexOptions.Singleline), It.IsAny<Dictionary<String, String>>()))
                 .Returns("<litleOnlineResponse version='9.14' response='0' message='Valid Format' xmlns='http://www.litle.com/schema'><creditResponse><litleTxnId>123</litleTxnId></creditResponse></litleOnlineResponse>");
 
             var mockedCommunication = mock.Object;
@@ -98,7 +98,7 @@ namespace Litle.Sdk.Test.Unit
 
             var mock = new Mock<Communications>();
 
-            mock.Setup(communications => communications.HttpPost(It.IsRegex(".*<litleTxnId>3</litleTxnId>\r\n<amount>2</amount>\r\n<secondaryAmount>1</secondaryAmount>\r\n<process.*", RegexOptions.Singleline), It.IsAny<Dictionary<String, String>>()))
+            mock.Setup(communications => communications.HttpPost(It.IsRegex(".*<litleTxnId>3</litleTxnId>\n<amount>2</amount>\n<secondaryAmount>1</secondaryAmount>\n<process.*", RegexOptions.Singleline), It.IsAny<Dictionary<String, String>>()))
                 .Returns("<litleOnlineResponse version='9.14' response='0' message='Valid Format' xmlns='http://www.litle.com/schema'><creditResponse><litleTxnId>123</litleTxnId></creditResponse></litleOnlineResponse>");
 
             var mockedCommunication = mock.Object;
@@ -120,7 +120,7 @@ namespace Litle.Sdk.Test.Unit
 
             var mock = new Mock<Communications>();
 
-            mock.Setup(communications => communications.HttpPost(It.IsRegex(".*<litleTxnId>3</litleTxnId>\r\n<amount>2</amount>\r\n<surchargeAmount>1</surchargeAmount>\r\n<process.*", RegexOptions.Singleline), It.IsAny<Dictionary<String, String>>()))
+            mock.Setup(communications => communications.HttpPost(It.IsRegex(".*<litleTxnId>3</litleTxnId>\n<amount>2</amount>\n<surchargeAmount>1</surchargeAmount>\n<process.*", RegexOptions.Singleline), It.IsAny<Dictionary<String, String>>()))
                 .Returns("<litleOnlineResponse version='9.14' response='0' message='Valid Format' xmlns='http://www.litle.com/schema'><creditResponse><litleTxnId>123</litleTxnId></creditResponse></litleOnlineResponse>");
 
             var mockedCommunication = mock.Object;
@@ -141,7 +141,7 @@ namespace Litle.Sdk.Test.Unit
 
             var mock = new Mock<Communications>();
 
-            mock.Setup(communications => communications.HttpPost(It.IsRegex(".*<litleTxnId>3</litleTxnId>\r\n<amount>2</amount>\r\n<processi.*", RegexOptions.Singleline), It.IsAny<Dictionary<String, String>>()))
+            mock.Setup(communications => communications.HttpPost(It.IsRegex(".*<litleTxnId>3</litleTxnId>\n<amount>2</amount>\n<processi.*", RegexOptions.Singleline), It.IsAny<Dictionary<String, String>>()))
                 .Returns("<litleOnlineResponse version='9.14' response='0' message='Valid Format' xmlns='http://www.litle.com/schema'><creditResponse><litleTxnId>123</litleTxnId></creditResponse></litleOnlineResponse>");
 
             var mockedCommunication = mock.Object;
@@ -163,7 +163,7 @@ namespace Litle.Sdk.Test.Unit
 
             var mock = new Mock<Communications>();
 
-            mock.Setup(communications => communications.HttpPost(It.IsRegex(".*<orderId>3</orderId>\r\n<amount>2</amount>\r\n<surchargeAmount>1</surchargeAmount>\r\n<orderSource>ecommerce</orderSource>.*", RegexOptions.Singleline), It.IsAny<Dictionary<String, String>>()))
+            mock.Setup(communications => communications.HttpPost(It.IsRegex(".*<orderId>3</orderId>\n<amount>2</amount>\n<surchargeAmount>1</surchargeAmount>\n<orderSource>ecommerce</orderSource>.*", RegexOptions.Singleline), It.IsAny<Dictionary<String, String>>()))
                 .Returns("<litleOnlineResponse version='9.14' response='0' message='Valid Format' xmlns='http://www.litle.com/schema'><creditResponse><litleTxnId>123</litleTxnId></creditResponse></litleOnlineResponse>");
 
             var mockedCommunication = mock.Object;
@@ -184,7 +184,7 @@ namespace Litle.Sdk.Test.Unit
 
             var mock = new Mock<Communications>();
 
-            mock.Setup(communications => communications.HttpPost(It.IsRegex(".*<orderId>3</orderId>\r\n<amount>2</amount>\r\n<orderSource>ecommerce</orderSource>.*", RegexOptions.Singleline), It.IsAny<Dictionary<String, String>>()))
+            mock.Setup(communications => communications.HttpPost(It.IsRegex(".*<orderId>3</orderId>\n<amount>2</amount>\n<orderSource>ecommerce</orderSource>.*", RegexOptions.Singleline), It.IsAny<Dictionary<String, String>>()))
                 .Returns("<litleOnlineResponse version='9.14' response='0' message='Valid Format' xmlns='http://www.litle.com/schema'><creditResponse><litleTxnId>123</litleTxnId></creditResponse></litleOnlineResponse>");
 
             var mockedCommunication = mock.Object;
@@ -206,7 +206,7 @@ namespace Litle.Sdk.Test.Unit
 
             var mock = new Mock<Communications>();
 
-            mock.Setup(communications => communications.HttpPost(It.IsRegex(".*<litleTxnId>3</litleTxnId>\r\n<amount>2</amount>\r\n<pos>\r\n<terminalId>abc123</terminalId></pos>\r\n<payPalNotes>.*", RegexOptions.Singleline), It.IsAny<Dictionary<String, String>>()))
+            mock.Setup(communications => communications.HttpPost(It.IsRegex(".*<litleTxnId>3</litleTxnId>\n<amount>2</amount>\n<pos>\n<terminalId>abc123</terminalId></pos>\n<payPalNotes>.*", RegexOptions.Singleline), It.IsAny<Dictionary<String, String>>()))
                 .Returns("<litleOnlineResponse version='9.14' response='0' message='Valid Format' xmlns='http://www.litle.com/schema'><creditResponse><litleTxnId>123</litleTxnId></creditResponse></litleOnlineResponse>");
 
             var mockedCommunication = mock.Object;
@@ -227,7 +227,7 @@ namespace Litle.Sdk.Test.Unit
 
             var mock = new Mock<Communications>();
 
-            mock.Setup(communications => communications.HttpPost(It.IsRegex(".*<litleTxnId>3</litleTxnId>\r\n<amount>2</amount>\r\n<payPalNotes>.*", RegexOptions.Singleline), It.IsAny<Dictionary<String, String>>()))
+            mock.Setup(communications => communications.HttpPost(It.IsRegex(".*<litleTxnId>3</litleTxnId>\n<amount>2</amount>\n<payPalNotes>.*", RegexOptions.Singleline), It.IsAny<Dictionary<String, String>>()))
                 .Returns("<litleOnlineResponse version='9.14' response='0' message='Valid Format' xmlns='http://www.litle.com/schema'><creditResponse><litleTxnId>123</litleTxnId></creditResponse></litleOnlineResponse>");
 
             var mockedCommunication = mock.Object;
@@ -249,7 +249,7 @@ namespace Litle.Sdk.Test.Unit
 
             var mock = new Mock<Communications>();
 
-            mock.Setup(communications => communications.HttpPost(It.IsRegex(".*<credit.*<amount>2</amount>.*\r\n<pin>1234</pin>.*</credit>.*", RegexOptions.Singleline), It.IsAny<Dictionary<String, String>>()))
+            mock.Setup(communications => communications.HttpPost(It.IsRegex(".*<credit.*<amount>2</amount>.*\n<pin>1234</pin>.*</credit>.*", RegexOptions.Singleline), It.IsAny<Dictionary<String, String>>()))
                 .Returns("<litleOnlineResponse version='9.14' response='0' message='Valid Format' xmlns='http://www.litle.com/schema'><creditResponse><litleTxnId>123</litleTxnId></creditResponse></litleOnlineResponse>");
 
             var mockedCommunication = mock.Object;
@@ -272,7 +272,7 @@ namespace Litle.Sdk.Test.Unit
 
             var mock = new Mock<Communications>();
 
-            mock.Setup(communications => communications.HttpPost(It.IsRegex(".*<credit.*<amount>2</amount>.*\r\n<orderSource>ecommerce</orderSource>.*</credit>.*", RegexOptions.Singleline), It.IsAny<Dictionary<String, String>>()))
+            mock.Setup(communications => communications.HttpPost(It.IsRegex(".*<credit.*<amount>2</amount>.*\n<orderSource>ecommerce</orderSource>.*</credit>.*", RegexOptions.Singleline), It.IsAny<Dictionary<String, String>>()))
                 .Returns("<litleOnlineResponse version='9.14' response='0' message='Valid Format' xmlns='http://www.litle.com/schema'><creditResponse><litleTxnId>123</litleTxnId></creditResponse></litleOnlineResponse>");
 
             var mockedCommunication = mock.Object;

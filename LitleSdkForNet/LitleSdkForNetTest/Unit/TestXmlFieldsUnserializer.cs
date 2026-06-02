@@ -15,7 +15,7 @@ namespace Litle.Sdk.Test.Unit
     class TestXmlFieldsUnserializer
     {
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void SetUpLitle()
         {
         }

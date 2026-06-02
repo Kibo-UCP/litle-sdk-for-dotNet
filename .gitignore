@@ -11,3 +11,4 @@ LitleSdkForNet/.idea
 *.zip
 *.suo
 Project.sln
+**/TestResults/

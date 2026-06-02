@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace Litle.Sdk
 {
 	public class LitleOnline : ILitleOnline
     {
-        private Dictionary<String, String> config;
+        // Cached XmlSerializer instance to avoid repeated dynamic assembly generation.
+        // XmlSerializer constructors for complex types compile serialization assemblies at runtime,
+        // which causes memory leaks if a new instance is created per call.
+        private static readonly XmlSerializer OnlineResponseSerializer = new XmlSerializer(typeof(litleOnlineResponse));
+
+        private Dictionary<string, string> config;
         private Communications communication;
 
         /**
@@ -19,7 +24,7 @@ namespace Litle.Sdk
          */
         public LitleOnline()
         {
-            config = new Dictionary<String, String>();
+            config = new Dictionary<string, string>();
             config["url"] = Properties.Settings.Default.url;
             config["reportGroup"] = Properties.Settings.Default.reportGroup;
             config["username"] = Properties.Settings.Default.username;
@@ -39,7 +44,7 @@ namespace Litle.Sdk
          * to specify their configuration settings or where different configurations are needed for different instances of LitleOnline.
          * 
          * Properties that *must* be set are:
-         * url (eg https://payments.litle.com/vap/communicator/online)
+         * url (eg https://www.testvantivcnp.com/sandbox/new/sandbox/communicator/online)
          * reportGroup (eg "Default Report Group")
          * username
          * merchantId
@@ -49,8 +54,11 @@ namespace Litle.Sdk
          * proxyHost
          * proxyPort
          * printxml (possible values "true" and "false" - defaults to false)
+         * logFile (path to transaction log file)
+         * neuterAccountNums (possible values "true" and "false" - masks card numbers in logs)
+         * maxConnections (maximum concurrent HTTP connections, defaults to 10)
          */
-        public LitleOnline(Dictionary<String, String> config)
+        public LitleOnline(Dictionary<string, string> config)
         {
             this.config = config;
             communication = new Communications();
@@ -303,16 +311,18 @@ namespace Litle.Sdk
             request.queryTransaction = queryTransaction;
 
             litleOnlineResponse litleresponse = sendToLitle(request);
-            transactionTypeWithReportGroup response = null;
             if (litleresponse.queryTransactionResponse != null)
             {
-                response = litleresponse.queryTransactionResponse;
+                return litleresponse.queryTransactionResponse;
             }
-            else if (litleresponse.queryTransactionUnavailableResponse != null)
+            if (litleresponse.queryTransactionUnavailableResponse != null)
             {
-                response = litleresponse.queryTransactionUnavailableResponse;
+                return litleresponse.queryTransactionUnavailableResponse;
             }
-            return response;
+            throw new LitleOnlineException(
+                "Unexpected response from server: queryTransaction returned neither " +
+                "queryTransactionResponse nor queryTransactionUnavailableResponse. " +
+                "Server response code: " + (litleresponse.response ?? "null"));
         }
 
         public fraudCheckResponse FraudCheck(fraudCheck fraudCheck)
@@ -322,6 +332,13 @@ namespace Litle.Sdk
 
         private litleOnlineRequest createLitleOnlineRequest()
         {
+            if (!config.ContainsKey("merchantId") || string.IsNullOrEmpty(config["merchantId"]))
+                throw new LitleOnlineException("Missing required configuration: 'merchantId'");
+            if (!config.ContainsKey("password") || string.IsNullOrEmpty(config["password"]))
+                throw new LitleOnlineException("Missing required configuration: 'password'");
+            if (!config.ContainsKey("username") || string.IsNullOrEmpty(config["username"]))
+                throw new LitleOnlineException("Missing required configuration: 'username'");
+
             litleOnlineRequest request = new litleOnlineRequest
             {
                 merchantId = config["merchantId"],
@@ -356,7 +373,15 @@ namespace Litle.Sdk
             var request = CreateRequest(transaction);
 
             litleOnlineResponse response = sendToLitle(request);
-            return getResponse(response);
+            T result = getResponse(response);
+            if (result == null)
+            {
+                throw new LitleOnlineException(
+                    "Unexpected server response: expected " + typeof(T).Name +
+                    " but the response field was null. Server response code: " +
+                    (response.response ?? "null") + ", message: " + (response.message ?? "null"));
+            }
+            return result;
         }
 
         private async Task<T> SendRequestAsync<T>(Func<litleOnlineResponse, T> getResponse, transactionRequest transaction, CancellationToken cancellationToken)
@@ -364,7 +389,15 @@ namespace Litle.Sdk
             var request = CreateRequest(transaction);
 
             litleOnlineResponse response = await sendToLitleAsync(request, cancellationToken).ConfigureAwait(false);
-            return getResponse(response);
+            T result = getResponse(response);
+            if (result == null)
+            {
+                throw new LitleOnlineException(
+                    "Unexpected server response: expected " + typeof(T).Name +
+                    " but the response field was null. Server response code: " +
+                    (response.response ?? "null") + ", message: " + (response.message ?? "null"));
+            }
+            return result;
         }
 
         private litleOnlineRequest CreateRequest(transactionRequest transaction)
@@ -514,17 +547,27 @@ namespace Litle.Sdk
 
         private litleOnlineResponse DeserializeResponse(string xmlResponse)
         {
-            // OpenAccess failure responses are returned with a different namespace;
-            // so, we need to clean that up before moving in to deserialization
+            if (string.IsNullOrEmpty(xmlResponse))
+            {
+                throw new LitleOnlineException(
+                    "Received empty or null response from server. " +
+                    "This may indicate a network interruption or proxy error.");
+            }
+
             const string pattern = "http://www.litle.com/schema/online";
-            var rgx = new Regex(pattern);
             if (xmlResponse.Contains(pattern))
             {
-                xmlResponse = rgx.Replace(xmlResponse, "http://www.litle.com/schema");
+                xmlResponse = xmlResponse.Replace(pattern, "http://www.litle.com/schema");
             }
             try
             {
                 litleOnlineResponse litleOnlineResponse = DeserializeObject(xmlResponse);
+                if (litleOnlineResponse == null)
+                {
+                    throw new LitleOnlineException(
+                        "Deserialization returned null. The server response may be malformed.");
+                }
+                // Catches all non-zero error response codes
                 if (!"0".Equals(litleOnlineResponse.response))
                 {
                     throw new LitleOnlineException(litleOnlineResponse.message);
@@ -536,31 +579,25 @@ namespace Litle.Sdk
             {
                 throw new LitleOnlineException("Error validating xml data against the schema", ioe);
             }
+            catch (XmlException xe)
+            {
+                throw new LitleOnlineException("Server response is not valid XML. This may indicate a proxy or network error.", xe);
+            }
         }
 
-        /*
-         * serialize the object
-         */
-        public static string SerializeObject(litleOnlineRequest req)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(litleOnlineRequest));
-            MemoryStream ms = new MemoryStream();
-            serializer.Serialize(ms, req);
-            
-            // return string is UTF8 encoded.
-            return Encoding.UTF8.GetString(ms.GetBuffer());
-        }
-
-        /*
-         * deserialize the object
-         */
         public static litleOnlineResponse DeserializeObject(string response)
         {
-            var serializer = new XmlSerializer(typeof(litleOnlineResponse));
-            var reader = new StringReader(response);
-            var deserializedResponse = (litleOnlineResponse) serializer.Deserialize(reader);
-            return deserializedResponse;
-
+            // Prevent XXE (XML External Entity) injection attacks on server responses
+            var settings = new XmlReaderSettings
+            {
+                DtdProcessing = DtdProcessing.Prohibit,
+                XmlResolver = null
+            };
+            using (var stringReader = new StringReader(response))
+            using (var xmlReader = XmlReader.Create(stringReader, settings))
+            {
+                return (litleOnlineResponse) OnlineResponseSerializer.Deserialize(xmlReader);
+            }
         }
 
         private void FillInReportGroup(transactionTypeWithReportGroup txn)
@@ -622,7 +659,7 @@ namespace Litle.Sdk
 
         public string Serialize()
         {
-            string xml = "<?xml version='1.0' encoding='utf-8'?>\r\n<litleOnlineRequest merchantId=\"" 
+            string xml = "<?xml version='1.0' encoding='utf-8'?>\n<litleOnlineRequest merchantId=\"" 
                 + merchantId + "\" version=\"9.14\" merchantSdk=\"" 
                 + merchantSdk + "\" xmlns=\"http://www.litle.com/schema\">"
                 + authentication.Serialize();
@@ -659,7 +696,7 @@ namespace Litle.Sdk
             else if (unloadReversal != null) xml += unloadReversal.Serialize();
             else if (queryTransaction != null) xml += queryTransaction.Serialize();
             else if (fraudCheck != null) xml += fraudCheck.Serialize();
-            xml += "\r\n</litleOnlineRequest>";
+            xml += "\n</litleOnlineRequest>";
 
             return xml;
         }
