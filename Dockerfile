@@ -17,4 +17,3 @@ ENV BUILD_VER=$BUILD_VER
 RUN dotnet build /p:Version=${BUILD_VER}  ./LitleSdkForNet.sln  -c Release --no-restore &&\
 	(dotnet test ./LitleSdkForNetTest/LitleSdkForNetTest.csproj --framework net10.0 --results-directory /buildoutput/testoutput/LitleSdkForNetTest -l kibo-junit --no-build -c Release --no-restore --collect:"XPlat Code Coverage" --filter "FullyQualifiedName~Unit" || true) && \
 	dotnet pack -c Release --no-build --no-restore --include-symbols /p:Version=${BUILD_VER} -o /buildoutput/nugs ./LitleSdkForNet.sln
-RUN bash ./sonarscanner/sonarnet.sh end || true
