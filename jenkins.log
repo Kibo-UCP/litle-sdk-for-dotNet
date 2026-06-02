@@ -1,0 +1,505 @@
+16:02:18  Branch indexing
+16:02:18 21:02:18  Connecting to https://api.github.com using kibo-ucp-github-app
+16:02:19  Obtained Jenkinsfile from 0c06bde89ce21160eaed8d0926d51304426b4cbe
+16:02:19  Loading library kibo-pipeline-shared-lib@master
+16:02:19  Attempting to resolve master from remote references...
+16:02:19   > /usr/bin/git --version # timeout=10
+16:02:19   > git --version # 'git version 1.8.3.1'
+16:02:19  using GIT_ASKPASS to set credentials 
+16:02:19   > /usr/bin/git ls-remote -h https://github.com/Kibo-UCP/Kibo.DevOps.JenkinsSharedLibrary.git # timeout=10
+16:02:19  Found match: refs/heads/master revision 9a377b2ac2e206849dc5a2bc1d7e6abf3e4859de
+16:02:19  The recommended git tool is: /usr/bin/git
+16:02:19  using credential kibo-ucp-github-app
+16:02:19  Cloning the remote Git repository
+16:02:19  Cloning with configured refspecs honoured and without tags
+16:02:19  Cloning repository https://github.com/Kibo-UCP/Kibo.DevOps.JenkinsSharedLibrary.git
+16:02:19   > /usr/bin/git init /var/lib/jenkins/workspace/bo_UCP_litle-sdk-for-dotNet_11.0@libs/6ca7ed4f8f4fd8bf2202a71b830e204a5d914ebbef2676cafaa596ac7886e5e3 # timeout=10
+16:02:19  Fetching upstream changes from https://github.com/Kibo-UCP/Kibo.DevOps.JenkinsSharedLibrary.git
+16:02:19   > /usr/bin/git --version # timeout=10
+16:02:19   > git --version # 'git version 1.8.3.1'
+16:02:19  using GIT_ASKPASS to set credentials 
+16:02:19   > /usr/bin/git fetch --no-tags --progress https://github.com/Kibo-UCP/Kibo.DevOps.JenkinsSharedLibrary.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+16:02:21   > /usr/bin/git config remote.origin.url https://github.com/Kibo-UCP/Kibo.DevOps.JenkinsSharedLibrary.git # timeout=10
+16:02:21   > /usr/bin/git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+16:02:21  Avoid second fetch
+16:02:21  Checking out Revision 9a377b2ac2e206849dc5a2bc1d7e6abf3e4859de (master)
+16:02:21   > /usr/bin/git config core.sparsecheckout # timeout=10
+16:02:21   > /usr/bin/git checkout -f 9a377b2ac2e206849dc5a2bc1d7e6abf3e4859de # timeout=10
+16:02:21  Commit message: "stg2 orderrouting proxy ooms"
+16:02:21  First time build. Skipping changelog.
+16:02:21   > /usr/bin/git --version # timeout=10
+16:02:21   > git --version # 'git version 1.8.3.1'
+16:02:22  [Pipeline] Start of Pipeline
+16:02:22  Scripts not permitted to use staticMethod org.jenkinsci.plugins.workflow.cps.Safepoint safepoint. Administrators can decide whether to approve or reject this signature.
+16:02:35  [Pipeline] node
+16:02:35  Running on Jenkins in /var/lib/jenkins/workspace/bo_UCP_litle-sdk-for-dotNet_11.0
+16:02:35  [Pipeline] {
+16:02:35  [Pipeline] stage
+16:02:35  [Pipeline] { (Declarative: Checkout SCM)
+16:02:35  [Pipeline] checkout
+16:02:35  The recommended git tool is: NONE
+16:02:35  using credential kibo-ucp-github-app
+16:02:35  Cloning the remote Git repository
+16:02:35  Cloning with configured refspecs honoured and without tags
+16:02:35  Cloning repository https://github.com/Kibo-UCP/litle-sdk-for-dotNet.git
+16:02:35   > /usr/bin/git init /var/lib/jenkins/workspace/bo_UCP_litle-sdk-for-dotNet_11.0 # timeout=10
+16:02:35  Fetching upstream changes from https://github.com/Kibo-UCP/litle-sdk-for-dotNet.git
+16:02:35   > /usr/bin/git --version # timeout=10
+16:02:35   > git --version # 'git version 1.8.3.1'
+16:02:35  using GIT_ASKPASS to set credentials 
+16:02:35   > /usr/bin/git fetch --no-tags --progress https://github.com/Kibo-UCP/litle-sdk-for-dotNet.git +refs/heads/11.0:refs/remotes/origin/11.0 # timeout=10
+16:02:36   > /usr/bin/git config remote.origin.url https://github.com/Kibo-UCP/litle-sdk-for-dotNet.git # timeout=10
+16:02:36   > /usr/bin/git config --add remote.origin.fetch +refs/heads/11.0:refs/remotes/origin/11.0 # timeout=10
+16:02:36  Avoid second fetch
+16:02:36  Checking out Revision 0c06bde89ce21160eaed8d0926d51304426b4cbe (11.0)
+16:02:36   > /usr/bin/git config core.sparsecheckout # timeout=10
+16:02:36   > /usr/bin/git checkout -f 0c06bde89ce21160eaed8d0926d51304426b4cbe # timeout=10
+16:02:36  Commit message: "Add Dockerfile and Jenkinsfile for CI/CD pipeline"
+16:02:36  First time build. Skipping changelog.
+16:02:36   > /usr/bin/git --version # timeout=10
+16:02:36   > git --version # 'git version 1.8.3.1'
+16:02:36  fatal: bad object 9a377b2ac2e206849dc5a2bc1d7e6abf3e4859de
+16:02:37  [Pipeline] }
+16:02:37  [Pipeline] // stage
+16:02:37  [Pipeline] withEnv
+16:02:37  [Pipeline] {
+16:02:37  [Pipeline] withEnv
+16:02:37  [Pipeline] {
+16:02:37  [Pipeline] stage
+16:02:37  [Pipeline] { (build image)
+16:02:37  [Pipeline] timeout
+16:02:37  Timeout set to expire in 3 hr 0 min
+16:02:37  [Pipeline] {
+16:02:37  [Pipeline] script
+16:02:37  [Pipeline] {
+16:02:37  [Pipeline] echo
+16:02:37  *** Build Context env  ***
+16:02:37  [Pipeline] sh
+16:02:37  + env
+16:02:37  JENKINS_NODE_COOKIE=7110519c-f9a3-4418-9c1a-c4d4c4995abc
+16:02:37  BUILD_URL=https://kubejenkins.dev.kibocommerce.com/job/Kibo%20UCP/job/litle-sdk-for-dotNet/job/11.0/1/
+16:02:37  IFS= 	
+16:02:37  
+16:02:37  HUDSON_SERVER_COOKIE=428f219ed11dbe04
+16:02:37  STAGE_NAME=build image
+16:02:37  BUILD_TAG=jenkins-Kibo UCP-litle-sdk-for-dotNet-11.0-1
+16:02:37  BRANCH_NAME=11.0
+16:02:37  JOB_URL=https://kubejenkins.dev.kibocommerce.com/job/Kibo%20UCP/job/litle-sdk-for-dotNet/job/11.0/
+16:02:37  WORKSPACE=/var/lib/jenkins/workspace/bo_UCP_litle-sdk-for-dotNet_11.0
+16:02:37  RUN_CHANGES_DISPLAY_URL=https://kubejenkins.dev.kibocommerce.com/job/Kibo%20UCP/job/litle-sdk-for-dotNet/job/11.0/1/display/redirect?page=changes
+16:02:37  USER=jenkins
+16:02:37  RUN_ARTIFACTS_DISPLAY_URL=https://kubejenkins.dev.kibocommerce.com/job/Kibo%20UCP/job/litle-sdk-for-dotNet/job/11.0/1/display/redirect?page=artifacts
+16:02:37  GIT_COMMIT=0c06bde89ce21160eaed8d0926d51304426b4cbe
+16:02:37  JENKINS_HOME=/var/lib/jenkins
+16:02:37  NLSPATH=/usr/dt/lib/nls/msg/%L/%N.cat
+16:02:37  PATH=/var/lib/jenkins/google-sdk/google-cloud-sdk/bin/:/sbin:/usr/sbin:/bin:/usr/bin
+16:02:37  RUN_DISPLAY_URL=https://kubejenkins.dev.kibocommerce.com/job/Kibo%20UCP/job/litle-sdk-for-dotNet/job/11.0/1/display/redirect
+16:02:37  _=/bin/env
+16:02:37  PWD=/var/lib/jenkins/workspace/bo_UCP_litle-sdk-for-dotNet_11.0
+16:02:37  HUDSON_URL=https://kubejenkins.dev.kibocommerce.com/
+16:02:37  SAFE_JOB_NAME=Kibo-UCP-litle-sdk-for-dotNet-11-0
+16:02:37  LANG=en_US.UTF-8
+16:02:37  JOB_NAME=Kibo UCP/litle-sdk-for-dotNet/11.0
+16:02:37  GITOPS_ENABLED=true
+16:02:37  XFILESEARCHPATH=/usr/dt/app-defaults/%L/Dt
+16:02:37  BUILD_DISPLAY_NAME=#1
+16:02:37  BUILD_ID=1
+16:02:37  JENKINS_URL=https://kubejenkins.dev.kibocommerce.com/
+16:02:37  BRANCH_IS_PRIMARY=true
+16:02:37  library.kibo-pipeline-shared-lib.version=master
+16:02:37  JOB_BASE_NAME=11.0
+16:02:37  RUN_TESTS_DISPLAY_URL=https://kubejenkins.dev.kibocommerce.com/job/Kibo%20UCP/job/litle-sdk-for-dotNet/job/11.0/1/display/redirect?page=tests
+16:02:37  HOME=/var/lib/jenkins
+16:02:37  SHLVL=3
+16:02:37  GIT_BRANCH=11.0
+16:02:37  CI=true
+16:02:37  WORKSPACE_TMP=/var/lib/jenkins/workspace/bo_UCP_litle-sdk-for-dotNet_11.0@tmp
+16:02:37  EXECUTOR_NUMBER=2
+16:02:37  JENKINS_SERVER_COOKIE=durable-2c016c66ef725943f52e9f2c4a38a26e333b39f8e3d8b97e531b59289d2cc84e
+16:02:37  NODE_LABELS=master
+16:02:37  GIT_URL=https://github.com/Kibo-UCP/litle-sdk-for-dotNet.git
+16:02:37  LOGNAME=jenkins
+16:02:37  HUDSON_HOME=/var/lib/jenkins
+16:02:37  NODE_NAME=master
+16:02:37  BUILD_NUMBER=1
+16:02:37  JOB_DISPLAY_URL=https://kubejenkins.dev.kibocommerce.com/job/Kibo%20UCP/job/litle-sdk-for-dotNet/job/11.0/display/redirect
+16:02:37  HUDSON_COOKIE=a85d638c-b276-465e-89ee-3b073ef83e0c
+16:02:37  [Pipeline] echo
+16:02:37  *** Original Pipeline Parameters ***
+16:02:37  [Pipeline] echo
+16:02:37  {KIBO_MAJOR_VERSION=2, SUPPORTS_NUGET=true, FAIL_ON_TEST_FAILURE=false, DOCKERFILE=./Dockerfile}
+16:02:37  [Pipeline] sh
+16:02:37  + git log -1 --pretty=%B
+16:02:37  [Pipeline] sh
+16:02:38  + git rev-parse HEAD
+16:02:38  [Pipeline] sh
+16:02:38  + git describe --tags 0c06bde89ce21160eaed8d0926d51304426b4cbe
+16:02:38  fatal: No names found, cannot describe anything.
+16:02:38  [Pipeline] echo
+16:02:38  tag=null
+16:02:38  [Pipeline] echo
+16:02:38  called toBuildLabel with 11.0 , 1,2
+16:02:38  [Pipeline] withCredentials
+16:02:38  Masking supported pattern matches of $USERNAME or $PASSWORD
+16:02:38  [Pipeline] {
+16:02:38  [Pipeline] echo
+16:02:38  Sonarscan disabled
+16:02:38  [Pipeline] }
+16:02:38  [Pipeline] // withCredentials
+16:02:38  [Pipeline] echo
+16:02:38  *** Updated Pipeline Parameters ***
+16:02:38  [Pipeline] echo
+16:02:38  {KIBO_MAJOR_VERSION=2, SUPPORTS_NUGET=true, FAIL_ON_TEST_FAILURE=false, DOCKERFILE=./Dockerfile, KUBE_DEPLOY_ID=260427210237, BRANCH_NAME=11.0, BUILD_ID=1, GIT_COMMIT_MESSAGE=Add Dockerfile and Jenkinsfile for CI/CD pipeline
+16:02:38  
+16:02:38  - Dockerfile: multi-stage build using kibo dotnet-10-build-1 base image
+16:02:38    - Restores from nuget.org and kibo nexus sources
+16:02:38    - Builds Release, runs unit tests with coverage, packs NuGet
+16:02:38    - Sonar scanner hooks (graceful fallback if not present)
+16:02:38  - Jenkinsfile: uses kibo-pipeline-shared-lib ngProjectPipeline
+16:02:38    - SUPPORTS_NUGET for NuGet package publishing
+16:02:38  - .dockerignore: excludes .git, bin/obj, docs from build context
+16:02:38  
+16:02:38  , GIT_TAG_NAME=null, MAJOR_VERSION=2, IMAGE_TAG=2.2618.0-11-0.1, TAGGED_IMAGE=null/null:2.2618.0-11-0.1, SKIP_BUILD_OUTPUT=null, CUSTOM_DOCKER_AUTH_MOUNT=/root/.docker, DOCKER_BUILD_TEST_DIR=/buildoutput, SERVICE_LIST_BUILD_ARG=null, DEPLOYMENT_NAME=litle-sdk-for-dotNet}
+16:02:38  [Pipeline] withCredentials
+16:02:38  Masking supported pattern matches of $DUSERNAME or $DPASSWORD
+16:02:38  [Pipeline] {
+16:02:38  [Pipeline] withEnv
+16:02:38  [Pipeline] {
+16:02:38  [Pipeline] withDockerRegistry
+16:02:38  [Pipeline] {
+16:02:38  [Pipeline] withCredentials
+16:02:38  Masking supported pattern matches of $PRIVSSH
+16:02:38  [Pipeline] {
+16:02:38  [Pipeline] sh
+16:02:38  + cat ****
+16:02:39  [Pipeline] sh
+16:02:39  + aws ecr get-login-password --region us-east-1
+16:02:39  + docker login -u AWS --password-stdin https://542216209467.dkr.ecr.us-east-1.amazonaws.com
+16:02:40  WARNING! Your password will be stored unencrypted in /var/lib/jenkins/.docker/config.json.
+16:02:40  Configure a credential helper to remove this warning. See
+16:02:40  https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+16:02:40  
+16:02:40  Login Succeeded
+16:02:40  [Pipeline] sh
+16:02:40  + docker login -u **** -p ****
+16:02:40  WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+16:02:40  WARNING! Your password will be stored unencrypted in /var/lib/jenkins/.docker/config.json.
+16:02:40  Configure a credential helper to remove this warning. See
+16:02:40  https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+16:02:40  
+16:02:40  Login Succeeded
+16:02:40  [Pipeline] sh
+16:02:40  + rm -rf ./jenkins_buildoutput
+16:02:40  [Pipeline] sh
+16:02:41  + mkdir -p ./buildoutput ./jenkins_buildoutput/testoutput
+16:02:41  [Pipeline] sh
+16:02:41  + docker build --build-arg BUILD_VER=2.2618.0-11-0.1 --build-arg SONAR_SCAN=disabled --build-arg BUILD_BRANCH_NAME=11.0 --build-arg GIT_COMMIT=0c06bde89ce21160eaed8d0926d51304426b4cbe --build-arg GIT_URI=https://github.com/Kibo-UCP/litle-sdk-for-dotNet.git --build-arg skiptest=null --build-arg servicelist=null --build-arg BUILD_NUMBER=1 --build-arg JOB_NAME=Kibo-UCP-litle-sdk-for-dotNet-11-0 --add-host shared.kube-int-dev.gcp-kibo-dev.int:10.1.161.145 --tag null/null:2.2618.0-11-0.1 -f ./Dockerfile .
+16:02:41  #1 [internal] load build definition from Dockerfile
+16:02:41  #1 sha256:7f001bc48ca41f6b5d64c31ab51bc83f359d49c1121b8aa4b9f3cabb8b014cc8
+16:02:41  #1 transferring dockerfile: 1.37kB done
+16:02:41  #1 DONE 0.0s
+16:02:41  
+16:02:41  #3 [auth] sharing credentials for 542216209467.dkr.ecr.us-east-1.amazonaws.com
+16:02:41  #3 sha256:5b45626c91b0b847b57422211bd440b5e00d39fee6cd33cbc4da6029bb22773e
+16:02:41  #3 DONE 0.0s
+16:02:41  
+16:02:41  #2 [internal] load metadata for 542216209467.dkr.ecr.us-east-1.amazonaws.com/kibo/base-images:dotnet-10-build-1
+16:02:41  #2 sha256:8c1cc65a7eadaf83c0e06edf492c010810a87b0487886fd67f0df25f89c34c40
+16:02:41  #2 DONE 0.4s
+16:02:41  
+16:02:41  #4 [internal] load .dockerignore
+16:02:41  #4 sha256:a6448554a8043dbb8cbd3e9d6c9520abe122addbb33e88c2e411dc42acd3d265
+16:02:41  #4 transferring context: 124B done
+16:02:41  #4 DONE 0.0s
+16:02:41  
+16:02:41  #15 [ 1/11] FROM 542216209467.dkr.ecr.us-east-1.amazonaws.com/kibo/base-images:dotnet-10-build-1@sha256:c73098c86e100394da632457d2449c46cfe8b81f8e8ec338fefe92918d31eb37
+16:02:41  #15 sha256:f478c42a027be4972cdf410533779649508ea94d521c3431c42949c3d310e119
+16:02:41  #15 resolve 542216209467.dkr.ecr.us-east-1.amazonaws.com/kibo/base-images:dotnet-10-build-1@sha256:c73098c86e100394da632457d2449c46cfe8b81f8e8ec338fefe92918d31eb37 done
+16:02:42  #15 ...
+16:02:42  
+16:02:42  #13 [internal] load build context
+16:02:42  #13 sha256:da9a7c4797cb8c5ec1a2698e95c738bc915b5bd142031adb9dd708c62e7b85c2
+16:02:42  #13 transferring context: 1.40MB 0.1s done
+16:02:42  #13 DONE 0.2s
+16:02:42  
+16:02:42  #15 [ 1/11] FROM 542216209467.dkr.ecr.us-east-1.amazonaws.com/kibo/base-images:dotnet-10-build-1@sha256:c73098c86e100394da632457d2449c46cfe8b81f8e8ec338fefe92918d31eb37
+16:02:42  #15 sha256:f478c42a027be4972cdf410533779649508ea94d521c3431c42949c3d310e119
+16:02:42  #15 sha256:65c46b5a29328fc3f02df018e10288906a12fa0b54fed647886cab1b2bd14d8e 0B / 189.57MB 0.2s
+16:02:42  #15 sha256:61258892dc1e658a21d7e433fcd4a8710d5fdefe495b4dd9e1f3efe52dc7d47d 0B / 23.60MB 0.2s
+16:02:42  #15 sha256:92ea4a94ff6edd33d4871d84fe1cc0584db5494cad621baeb79fafda5f2ed13f 10.07kB / 10.07kB done
+16:02:42  #15 sha256:37a154b51f786248008837524dbccf1795a7285d9c8f90a36fe4228f64777872 480B / 480B 0.2s done
+16:02:42  #15 sha256:c73098c86e100394da632457d2449c46cfe8b81f8e8ec338fefe92918d31eb37 3.68kB / 3.68kB done
+16:02:42  #15 sha256:6ccb963306457172f3b0592a0ace1909369f32b803d498eae17ef35327e0b380 0B / 17.60MB 0.2s
+16:02:42  #15 sha256:61258892dc1e658a21d7e433fcd4a8710d5fdefe495b4dd9e1f3efe52dc7d47d 10.03MB / 23.60MB 0.3s
+16:02:42  #15 sha256:65c46b5a29328fc3f02df018e10288906a12fa0b54fed647886cab1b2bd14d8e 16.78MB / 189.57MB 0.5s
+16:02:42  #15 sha256:61258892dc1e658a21d7e433fcd4a8710d5fdefe495b4dd9e1f3efe52dc7d47d 19.92MB / 23.60MB 0.5s
+16:02:42  #15 sha256:6ccb963306457172f3b0592a0ace1909369f32b803d498eae17ef35327e0b380 17.60MB / 17.60MB 0.5s
+16:02:42  #15 sha256:61258892dc1e658a21d7e433fcd4a8710d5fdefe495b4dd9e1f3efe52dc7d47d 23.07MB / 23.60MB 0.6s
+16:02:42  #15 sha256:6ccb963306457172f3b0592a0ace1909369f32b803d498eae17ef35327e0b380 17.60MB / 17.60MB 0.5s done
+16:02:42  #15 sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 0B / 346.92MB 0.6s
+16:02:42  #15 extracting sha256:61258892dc1e658a21d7e433fcd4a8710d5fdefe495b4dd9e1f3efe52dc7d47d
+16:02:42  #15 sha256:61258892dc1e658a21d7e433fcd4a8710d5fdefe495b4dd9e1f3efe52dc7d47d 23.60MB / 23.60MB 0.6s done
+16:02:42  #15 sha256:507020d3b8ebcab25610058a33a6b62c3acbf5093dca268220279881b4c1dc51 0B / 1.63kB 0.7s
+16:02:42  #15 sha256:507020d3b8ebcab25610058a33a6b62c3acbf5093dca268220279881b4c1dc51 1.63kB / 1.63kB 0.7s done
+16:02:42  #15 sha256:c43cffa6485473edfae73bf6bace648ac7d79372dd0b6d0ed36deb7711559bfd 0B / 125B 0.8s
+16:02:42  #15 sha256:c43cffa6485473edfae73bf6bace648ac7d79372dd0b6d0ed36deb7711559bfd 125B / 125B 0.9s done
+16:02:42  #15 sha256:4c739605d6f87e11135333b8356568c910f29576c2e353aac63fb53dd6acb304 0B / 2.96kB 0.9s
+16:02:42  #15 sha256:65c46b5a29328fc3f02df018e10288906a12fa0b54fed647886cab1b2bd14d8e 38.80MB / 189.57MB 1.1s
+16:02:42  #15 sha256:4c739605d6f87e11135333b8356568c910f29576c2e353aac63fb53dd6acb304 2.96kB / 2.96kB 0.9s done
+16:02:42  #15 sha256:b153fd61681093511ffa55d528cdb072208cc759764038f2c8da937187fb5651 563B / 563B 1.0s done
+16:02:42  #15 sha256:986c883130fc2dc6aff9282991777aba4e6b28ae398150497ed0a876b47d082f 2.93kB / 2.93kB 1.1s done
+16:02:43  #15 sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 19.92MB / 346.92MB 1.2s
+16:02:43  #15 sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 37.75MB / 346.92MB 1.4s
+16:02:43  #15 sha256:65c46b5a29328fc3f02df018e10288906a12fa0b54fed647886cab1b2bd14d8e 58.72MB / 189.57MB 1.5s
+16:02:43  #15 sha256:65c46b5a29328fc3f02df018e10288906a12fa0b54fed647886cab1b2bd14d8e 71.30MB / 189.57MB 2.0s
+16:02:43  #15 sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 56.62MB / 346.92MB 2.1s
+16:02:44  #15 sha256:65c46b5a29328fc3f02df018e10288906a12fa0b54fed647886cab1b2bd14d8e 82.84MB / 189.57MB 2.5s
+16:02:44  #15 sha256:65c46b5a29328fc3f02df018e10288906a12fa0b54fed647886cab1b2bd14d8e 94.37MB / 189.57MB 2.7s
+16:02:44  #15 sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 79.69MB / 346.92MB 2.7s
+16:02:44  #15 extracting sha256:61258892dc1e658a21d7e433fcd4a8710d5fdefe495b4dd9e1f3efe52dc7d47d 2.0s done
+16:02:44  #15 sha256:65c46b5a29328fc3f02df018e10288906a12fa0b54fed647886cab1b2bd14d8e 109.05MB / 189.57MB 3.0s
+16:02:44  #15 sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 100.66MB / 346.92MB 3.1s
+16:02:45  #15 sha256:65c46b5a29328fc3f02df018e10288906a12fa0b54fed647886cab1b2bd14d8e 124.78MB / 189.57MB 3.3s
+16:02:45  #15 sha256:65c46b5a29328fc3f02df018e10288906a12fa0b54fed647886cab1b2bd14d8e 136.31MB / 189.57MB 3.5s
+16:02:45  #15 sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 121.63MB / 346.92MB 3.5s
+16:02:45  #15 sha256:65c46b5a29328fc3f02df018e10288906a12fa0b54fed647886cab1b2bd14d8e 159.38MB / 189.57MB 4.0s
+16:02:45  #15 sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 142.61MB / 346.92MB 4.0s
+16:02:46  #15 sha256:65c46b5a29328fc3f02df018e10288906a12fa0b54fed647886cab1b2bd14d8e 178.26MB / 189.57MB 4.5s
+16:02:46  #15 sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 163.58MB / 346.92MB 4.8s
+16:02:47  #15 sha256:65c46b5a29328fc3f02df018e10288906a12fa0b54fed647886cab1b2bd14d8e 189.57MB / 189.57MB 5.1s
+16:02:47  #15 sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 184.55MB / 346.92MB 5.3s
+16:02:47  #15 sha256:65c46b5a29328fc3f02df018e10288906a12fa0b54fed647886cab1b2bd14d8e 189.57MB / 189.57MB 5.5s done
+16:02:47  #15 extracting sha256:65c46b5a29328fc3f02df018e10288906a12fa0b54fed647886cab1b2bd14d8e 0.1s
+16:02:47  #15 sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 204.47MB / 346.92MB 5.9s
+16:02:48  #15 sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 226.49MB / 346.92MB 6.5s
+16:02:48  #15 sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 247.46MB / 346.92MB 7.0s
+16:02:49  #15 sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 268.44MB / 346.92MB 7.5s
+16:02:49  #15 sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 289.41MB / 346.92MB 7.9s
+16:02:50  #15 sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 310.38MB / 346.92MB 8.4s
+16:02:50  #15 sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 331.35MB / 346.92MB 8.8s
+16:02:52  #15 extracting sha256:65c46b5a29328fc3f02df018e10288906a12fa0b54fed647886cab1b2bd14d8e 5.2s
+16:02:53  #15 sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 346.92MB / 346.92MB 11.7s done
+16:02:58  #15 extracting sha256:65c46b5a29328fc3f02df018e10288906a12fa0b54fed647886cab1b2bd14d8e 10.3s
+16:02:58  #15 extracting sha256:65c46b5a29328fc3f02df018e10288906a12fa0b54fed647886cab1b2bd14d8e 11.1s done
+16:02:58  #15 extracting sha256:37a154b51f786248008837524dbccf1795a7285d9c8f90a36fe4228f64777872 0.0s done
+16:02:58  #15 extracting sha256:6ccb963306457172f3b0592a0ace1909369f32b803d498eae17ef35327e0b380
+16:02:59  #15 extracting sha256:6ccb963306457172f3b0592a0ace1909369f32b803d498eae17ef35327e0b380 1.1s done
+16:02:59  #15 extracting sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4
+16:03:05  #15 extracting sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 5.1s
+16:03:10  #15 extracting sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 10.2s
+16:03:15  #15 extracting sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 15.5s
+16:03:19  #15 extracting sha256:538e3f4a3c8a23a8c3dcd08def4aef452fb9adf330fe0c2509b118b4d20509c4 19.5s done
+16:03:19  #15 extracting sha256:507020d3b8ebcab25610058a33a6b62c3acbf5093dca268220279881b4c1dc51
+16:03:19  #15 extracting sha256:507020d3b8ebcab25610058a33a6b62c3acbf5093dca268220279881b4c1dc51 0.0s done
+16:03:19  #15 extracting sha256:c43cffa6485473edfae73bf6bace648ac7d79372dd0b6d0ed36deb7711559bfd 0.0s done
+16:03:19  #15 extracting sha256:4c739605d6f87e11135333b8356568c910f29576c2e353aac63fb53dd6acb304 0.0s done
+16:03:19  #15 extracting sha256:b153fd61681093511ffa55d528cdb072208cc759764038f2c8da937187fb5651 0.0s done
+16:03:19  #15 extracting sha256:986c883130fc2dc6aff9282991777aba4e6b28ae398150497ed0a876b47d082f 0.0s done
+16:03:20  #15 DONE 38.3s
+16:03:20  
+16:03:20  #14 [ 2/11] WORKDIR /src/LitleSdkForNet
+16:03:20  #14 sha256:b34862296055d5a3e159ceb03bd5807573f271b8d31e9c1ce6fa2ae373fd56a1
+16:03:34  #14 DONE 13.8s
+16:03:34  
+16:03:34  #12 [ 3/11] COPY [LitleSdkForNet/**/*.csproj, LitleSdkForNet/*.sln, ./]
+16:03:34  #12 sha256:fbdf873bf1adf7a6cbeef12c49e90302ba24c2b413f163f3e480416b680ed36e
+16:03:34  #12 DONE 0.1s
+16:03:34  
+16:03:34  #11 [ 4/11] RUN node -e "var fs=require('fs');fs.readdir(__dirname,function(err,files){files.filter((file)=>{return file.endsWith('.csproj')}).forEach((file)=>{var dir=file.substr(0,file.length-'.csproj'.length);var dest=dir+'/'+dir+'.csproj';if(!fs.existsSync(dir)){fs.mkdirSync(dir)}fs.rename(file,dest,console.log)})});"
+16:03:34  #11 sha256:b5abad67a3223f7fc0ae2dd351ddde42ae687345afb0d50f164f40bca2a3f441
+16:03:34  #11 0.506 null
+16:03:34  #11 0.508 null
+16:03:34  #11 DONE 0.6s
+16:03:34  
+16:03:34  #10 [ 5/11] RUN dotnet restore  --source https://api.nuget.org/v3/index.json --source https://nexus.kibo-dev-ext.com/repository/nuget-localbuild/  LitleSdkForNet.sln
+16:03:34  #10 sha256:6d314f80c8868fced62bd2b8637af9ef347d41ce4b00bc9e9d2d835ab760acb9
+16:03:36  #10 1.864   Determining projects to restore...
+16:03:40  #10 5.527   Restored /src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj (in 2.84 sec).
+16:03:40  #10 5.528   Restored /src/LitleSdkForNet/LitleSdkForNetTest/LitleSdkForNetTest.csproj (in 2.84 sec).
+16:03:40  #10 DONE 6.1s
+16:03:40  
+16:03:40  #9 [ 6/11] WORKDIR /src
+16:03:40  #9 sha256:8d1e84ce6a422558f221473bcefaf5c674b3a766fa4f3fc7df0aae06fefe345f
+16:03:40  #9 DONE 0.1s
+16:03:41  
+16:03:41  #8 [ 7/11] COPY . .
+16:03:41  #8 sha256:dd03d941233509bfbb9f443f97d0f078bbbd3a3e66393bd238bc77f65d639dc0
+16:03:41  #8 DONE 0.2s
+16:03:41  
+16:03:41  #7 [ 8/11] WORKDIR /src/LitleSdkForNet
+16:03:41  #7 sha256:97bed988a6dbe0f391b14b9220160cf2f8631f8aa4e6196bb0c80bd01db00f17
+16:03:41  #7 DONE 0.1s
+16:03:41  
+16:03:41  #6 [ 9/11] RUN bash ./sonarscanner/sonarnet.sh start || true
+16:03:41  #6 sha256:dc4c6bcfe1b253ad14f7ced7c834139c1e02a7e5b5e14ef5c8ee4e8b79da0290
+16:03:41  #6 0.326 bash: ./sonarscanner/sonarnet.sh: No such file or directory
+16:03:41  #6 DONE 0.4s
+16:03:41  
+16:03:41  #5 [10/11] RUN dotnet build /p:Version=2.2618.0-11-0.1  ./LitleSdkForNet.sln  -c Release --no-restore &&	dotnet test ./LitleSdkForNetTest/LitleSdkForNetTest.csproj --framework net10.0 --results-directory /buildoutput/testoutput/LitleSdkForNetTest -l kibo-junit --no-build -c Release --collect:"XPlat Code Coverage" --filter "FullyQualifiedName~Unit" || true && 	dotnet pack -c Release --no-build --include-symbols /p:Version=2.2618.0-11-0.1 -o /buildoutput/nugs ./LitleSdkForNet.sln
+16:03:41  #5 sha256:fb3baf7f3deecacd76a8181a26165701acacda3a8b1ba82f2f34db0f793f477c
+16:03:51  #5 9.631 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(4153,26): warning CS8981: The type name 'pos' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.631 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(8744,26): warning CS8981: The type name 'wallet' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.633 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(2567,26): warning CS8981: The type name 'capture' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.633 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(11,26): warning CS8981: The type name 'authentication' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.633 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(3005,26): warning CS8981: The type name 'sale' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.633 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(1289,26): warning CS8981: The type name 'subscription' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.633 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(374,26): warning CS8981: The type name 'contact' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.633 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(3381,26): warning CS8981: The type name 'credit' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.633 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(3543,26): warning CS8981: The type name 'activate' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.633 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(3570,26): warning CS8981: The type name 'deactivate' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.633 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(3593,26): warning CS8981: The type name 'load' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.633 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(3618,26): warning CS8981: The type name 'unload' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.633 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(2155,26): warning CS8981: The type name 'authorization' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.633 /src/LitleSdkForNet/LitleSdkForNet/LitleBatch.cs(511,24): warning SYSLIB0023: 'RNGCryptoServiceProvider' is obsolete: 'RNGCryptoServiceProvider is obsolete. To generate a random number, use one of the RandomNumberGenerator static methods instead.' (https://aka.ms/dotnet-warnings/SYSLIB0023) [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.633 /src/LitleSdkForNet/LitleSdkForNet/LitleBatch.cs(511,63): warning SYSLIB0023: 'RNGCryptoServiceProvider' is obsolete: 'RNGCryptoServiceProvider is obsolete. To generate a random number, use one of the RandomNumberGenerator static methods instead.' (https://aka.ms/dotnet-warnings/SYSLIB0023) [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.633 /src/LitleSdkForNet/LitleSdkForNet/LitleBatchTransactions.cs(96,17): warning CS8073: The result of the expression is always 'true' since a value of type 'DateTime' is never equal to 'null' of type 'DateTime?' [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.633 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(2549,17): warning CS8073: The result of the expression is always 'true' since a value of type 'DateTime' is never equal to 'null' of type 'DateTime?' [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.633 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(2680,17): warning CS8073: The result of the expression is always 'true' since a value of type 'DateTime' is never equal to 'null' of type 'DateTime?' [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.633 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(1873,17): warning CS8073: The result of the expression is always 'true' since a value of type 'DateTime' is never equal to 'null' of type 'DateTime?' [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.633 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(1877,17): warning CS8073: The result of the expression is always 'true' since a value of type 'DateTime' is never equal to 'null' of type 'DateTime?' [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.633 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(3659,17): warning CS8073: The result of the expression is always 'true' since a value of type 'DateTime' is never equal to 'null' of type 'DateTime?' [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.633 /src/LitleSdkForNet/LitleSdkForNet/Communications.cs(174,40): warning CS0168: The variable 'e' is declared but never used [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:51  #5 9.730   LitleSdkForNet -> /src/LitleSdkForNet/LitleSdkForNet/bin/Release/net10.0/LitleSdkForNet.dll
+16:03:54  #5 12.77   LitleSdkForNetTest -> /src/LitleSdkForNet/LitleSdkForNetTest/bin/Release/net10.0/LitleSdkForDotNetTest.dll
+16:03:54  #5 12.83 
+16:03:54  #5 12.83 Build succeeded.
+16:03:54  #5 12.83 
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(4153,26): warning CS8981: The type name 'pos' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(8744,26): warning CS8981: The type name 'wallet' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(2567,26): warning CS8981: The type name 'capture' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(11,26): warning CS8981: The type name 'authentication' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(3005,26): warning CS8981: The type name 'sale' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(1289,26): warning CS8981: The type name 'subscription' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(374,26): warning CS8981: The type name 'contact' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(3381,26): warning CS8981: The type name 'credit' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(3543,26): warning CS8981: The type name 'activate' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(3570,26): warning CS8981: The type name 'deactivate' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(3593,26): warning CS8981: The type name 'load' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(3618,26): warning CS8981: The type name 'unload' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(2155,26): warning CS8981: The type name 'authorization' only contains lower-cased ascii characters. Such names may become reserved for the language. [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleBatch.cs(511,24): warning SYSLIB0023: 'RNGCryptoServiceProvider' is obsolete: 'RNGCryptoServiceProvider is obsolete. To generate a random number, use one of the RandomNumberGenerator static methods instead.' (https://aka.ms/dotnet-warnings/SYSLIB0023) [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleBatch.cs(511,63): warning SYSLIB0023: 'RNGCryptoServiceProvider' is obsolete: 'RNGCryptoServiceProvider is obsolete. To generate a random number, use one of the RandomNumberGenerator static methods instead.' (https://aka.ms/dotnet-warnings/SYSLIB0023) [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleBatchTransactions.cs(96,17): warning CS8073: The result of the expression is always 'true' since a value of type 'DateTime' is never equal to 'null' of type 'DateTime?' [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(2549,17): warning CS8073: The result of the expression is always 'true' since a value of type 'DateTime' is never equal to 'null' of type 'DateTime?' [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(2680,17): warning CS8073: The result of the expression is always 'true' since a value of type 'DateTime' is never equal to 'null' of type 'DateTime?' [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(1873,17): warning CS8073: The result of the expression is always 'true' since a value of type 'DateTime' is never equal to 'null' of type 'DateTime?' [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(1877,17): warning CS8073: The result of the expression is always 'true' since a value of type 'DateTime' is never equal to 'null' of type 'DateTime?' [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/LitleCommonTransactions.cs(3659,17): warning CS8073: The result of the expression is always 'true' since a value of type 'DateTime' is never equal to 'null' of type 'DateTime?' [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83 /src/LitleSdkForNet/LitleSdkForNet/Communications.cs(174,40): warning CS0168: The variable 'e' is declared but never used [/src/LitleSdkForNet/LitleSdkForNet/LitleSdkForNet.csproj]
+16:03:54  #5 12.83     22 Warning(s)
+16:03:54  #5 12.83     0 Error(s)
+16:03:54  #5 12.83 
+16:03:54  #5 12.83 Time Elapsed 00:00:11.91
+16:03:55  #5 14.05 Test run for /src/LitleSdkForNet/LitleSdkForNetTest/bin/Release/net10.0/LitleSdkForDotNetTest.dll (.NETCoreApp,Version=v10.0)
+16:03:55  #5 14.18 VSTest version 18.0.1 (x64)
+16:03:55  #5 14.18 
+16:03:56  #5 14.38 Starting test execution, please wait...
+16:03:56  #5 14.41 Could not find a test logger with AssemblyQualifiedName, URI or FriendlyName 'kibo-junit'.
+16:03:58  #5 16.79   The package LitleSdkForNet.2.2618.0-11-0.1 is missing a readme. Go to https://aka.ms/nuget/authoring-best-practices/readme to learn why package readmes are important.
+16:03:58  #5 16.79   Successfully created package '/buildoutput/nugs/LitleSdkForNet.2.2618.0-11-0.1.nupkg'.
+16:03:58  #5 16.81   Successfully created package '/buildoutput/nugs/LitleSdkForNet.2.2618.0-11-0.1.symbols.nupkg'.
+16:03:58  #5 DONE 17.0s
+16:03:58  
+16:03:58  #16 [11/11] RUN bash ./sonarscanner/sonarnet.sh end || true
+16:03:58  #16 sha256:e9747ca0feb1279047011155e6d20c3d2f9ae28ee2fa325132f447536820f13b
+16:03:58  #16 0.399 bash: ./sonarscanner/sonarnet.sh: No such file or directory
+16:03:59  #16 DONE 0.5s
+16:03:59  
+16:03:59  #17 exporting to image
+16:03:59  #17 sha256:28ac4377eb0176c2f34243c7b2e491ead67dbeca19662666f38953d6f864e8ef
+16:03:59  #17 exporting layers
+16:04:00  #17 exporting layers 0.7s done
+16:04:00  #17 writing image sha256:835aac3a2fb991b23bfe5e4508ac3f5bf59a725dd29dbba6b00773f55df7d04b done
+16:04:00  #17 naming to docker.io/null/null:2.2618.0-11-0.1 done
+16:04:00  #17 DONE 0.7s
+16:04:00  [Pipeline] sh
+16:04:00  + docker run -v /var/lib/jenkins/workspace/bo_UCP_litle-sdk-for-dotNet_11.0/buildoutput:/opt/mount --rm --entrypoint cp null/null:2.2618.0-11-0.1 /buildoutput /opt/mount/ -a
+16:04:00  [Pipeline] echo
+16:04:00  Build output xml files:
+16:04:00  [Pipeline] sh
+16:04:01  + find ./buildoutput -type f -name '*cobertura*.xml'
+16:04:01  [Pipeline] sh
+16:04:01  + find ./buildoutput -type f -name '*.xml'
+16:04:01  [Pipeline] sh
+16:04:01  + cp -r ./buildoutput ./jenkins_buildoutput/testoutput
+16:04:01  [Pipeline] sh
+16:04:02  + docker run --rm -v /var/lib/jenkins/workspace/bo_UCP_litle-sdk-for-dotNet_11.0/buildoutput:/buildoutput --rm --entrypoint rm null/null:2.2618.0-11-0.1 /buildoutput -rf
+16:04:02  rm: cannot remove '/buildoutput': Device or resource busy
+16:04:02  + true
+16:04:02  [Pipeline] }
+16:04:02  [Pipeline] // withCredentials
+16:04:02  [Pipeline] }
+16:04:02  [Pipeline] // withDockerRegistry
+16:04:02  [Pipeline] }
+16:04:02  [Pipeline] // withEnv
+16:04:02  [Pipeline] }
+16:04:02  [Pipeline] // withCredentials
+16:04:02  [Pipeline] }
+16:04:02  [Pipeline] // script
+16:04:02  [Pipeline] }
+16:04:02  [Pipeline] // timeout
+16:04:02  [Pipeline] }
+16:04:02  [Pipeline] // stage
+16:04:02  [Pipeline] stage
+16:04:02  [Pipeline] { (test image)
+16:04:02  [Pipeline] script
+16:04:02  [Pipeline] {
+16:04:02  [Pipeline] sh
+16:04:03  + mkdir ./jenkins_buildoutput/codecoverage -p
+16:04:03  [Pipeline] sh
+16:04:03  + rsync -a --prune-empty-dirs --include '*/' --include '*cobertura*.xml' --exclude '*' jenkins_buildoutput/testoutput jenkins_buildoutput/codecoverage
+16:04:03  [Pipeline] sh
+16:04:03  + find ./jenkins_buildoutput/testoutput -type f -name '*cobertura*.xml' -delete
+16:04:03  [Pipeline] junit
+16:04:03  Recording test results
+16:04:03  No test report files were found. Configuration error?
+16:04:03  [Pipeline] }
+16:04:03  [Pipeline] // script
+16:04:03  [Pipeline] }
+16:04:03  [Pipeline] // stage
+16:04:03  [Pipeline] stage
+16:04:03  [Pipeline] { (code coverage)
+16:04:03  Stage "code coverage" skipped due to earlier failure(s)
+16:04:03  [Pipeline] }
+16:04:03  [Pipeline] // stage
+16:04:03  [Pipeline] stage
+16:04:03  [Pipeline] { (push packages)
+16:04:03  Stage "push packages" skipped due to earlier failure(s)
+16:04:03  [Pipeline] }
+16:04:03  [Pipeline] // stage
+16:04:03  [Pipeline] stage
+16:04:03  [Pipeline] { (push image)
+16:04:03  Stage "push image" skipped due to earlier failure(s)
+16:04:03  [Pipeline] }
+16:04:03  [Pipeline] // stage
+16:04:03  [Pipeline] stage
+16:04:03  [Pipeline] { (releases cicd)
+16:04:03  Stage "releases cicd" skipped due to earlier failure(s)
+16:04:03  [Pipeline] }
+16:04:04  [Pipeline] // stage
+16:04:04  [Pipeline] stage
+16:04:04  [Pipeline] { (kube deploy)
+16:04:04  Stage "kube deploy" skipped due to earlier failure(s)
+16:04:04  [Pipeline] }
+16:04:04  [Pipeline] // stage
+16:04:04  [Pipeline] stage
+16:04:04  [Pipeline] { (Declarative: Post Actions)
+16:04:04  [Pipeline] sh
+16:04:04  + docker ps -aq --filter label=jenkins.build_number=1 --filter label=jenkins.job_name=Kibo-UCP-litle-sdk-for-dotNet-11-0
+16:04:04  + xargs -r docker rm -f
+16:04:04  [Pipeline] sh
+16:04:04  + docker network prune -f --filter label=jenkins.build_number=1 --filter label=jenkins.job_name=Kibo-UCP-litle-sdk-for-dotNet-11-0
+16:04:04  [Pipeline] }
+16:04:04  [Pipeline] // stage
+16:04:04  [Pipeline] }
+16:04:04  [Pipeline] // withEnv
+16:04:04  [Pipeline] }
+16:04:04  [Pipeline] // withEnv
+16:04:04  [Pipeline] }
+16:04:04  [Pipeline] // node
+16:04:04  [Pipeline] End of Pipeline
+16:04:05  ERROR: No test report files were found. Configuration error?
+16:04:05  
+16:04:05  GitHub has been notified of this commit’s build result
+16:04:05  
+16:04:05  Finished: FAILURE

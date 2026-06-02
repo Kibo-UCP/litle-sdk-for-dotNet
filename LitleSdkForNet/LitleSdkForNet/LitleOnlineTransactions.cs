@@ -13,7 +13,7 @@ namespace Litle.Sdk
 
         public override string Serialize()
         {
-            string xml = "\r\n<void";
+            string xml = "\n<void";
             xml += " id=\"" + SecurityElement.Escape(id) + "\"";
             if (customerId != null)
             {
@@ -21,9 +21,9 @@ namespace Litle.Sdk
             }
             xml += " reportGroup=\"" + SecurityElement.Escape(reportGroup) + "\"";
             xml += ">";
-            xml += "\r\n<litleTxnId>" + litleTxnId + "</litleTxnId>";
-            if (processingInstructions != null) xml += "\r\n<processingInstructions>" + processingInstructions.Serialize() + "\r\n</processingInstructions>";
-            xml += "\r\n</void>";
+            xml += "\n<litleTxnId>" + litleTxnId + "</litleTxnId>";
+            if (processingInstructions != null) xml += "\n<processingInstructions>" + processingInstructions.Serialize() + "\n</processingInstructions>";
+            xml += "\n</void>";
 
             return xml;
         }
@@ -196,15 +196,15 @@ namespace Litle.Sdk
 
         public override string Serialize()
         {
-            string xml = "\r\n<echeckVoid";
+            string xml = "\n<echeckVoid";
             xml += " id=\"" + SecurityElement.Escape(id) + "\"";
             if (customerId != null)
             {
                 xml += " customerId=\"" + SecurityElement.Escape(customerId) + "\"";
             }
             xml += " reportGroup=\"" + SecurityElement.Escape(reportGroup) + "\">";
-            xml += "\r\n<litleTxnId>" + litleTxnId + "</litleTxnId>";
-            xml += "\r\n</echeckVoid>";
+            xml += "\n<litleTxnId>" + litleTxnId + "</litleTxnId>";
+            xml += "\n</echeckVoid>";
             return xml;
         }
     }
@@ -336,15 +336,15 @@ namespace Litle.Sdk
 
         public override string Serialize()
         {
-            string xml = "\r\n<depositReversal";
+            string xml = "\n<depositReversal";
             xml += " id=\"" + SecurityElement.Escape(id) + "\"";
             if (customerId != null)
             {
                 xml += " customerId=\"" + SecurityElement.Escape(customerId) + "\"";
             }
             xml += " reportGroup=\"" + SecurityElement.Escape(reportGroup) + "\">";
-            xml += "\r\n<litleTxnId>" + SecurityElement.Escape(litleTxnId) + "</litleTxnId>";
-            xml += "\r\n</depositReversal>";
+            xml += "\n<litleTxnId>" + SecurityElement.Escape(litleTxnId) + "</litleTxnId>";
+            xml += "\n</depositReversal>";
             return xml;
         }
     }
@@ -356,15 +356,15 @@ namespace Litle.Sdk
 
         public override string Serialize()
         {
-            string xml = "\r\n<refundReversal";
+            string xml = "\n<refundReversal";
             xml += " id=\"" + SecurityElement.Escape(id) + "\"";
             if (customerId != null)
             {
                 xml += " customerId=\"" + SecurityElement.Escape(customerId) + "\"";
             }
             xml += " reportGroup=\"" + SecurityElement.Escape(reportGroup) + "\">";
-            xml += "\r\n<litleTxnId>" + SecurityElement.Escape(litleTxnId) + "</litleTxnId>";
-            xml += "\r\n</refundReversal>";
+            xml += "\n<litleTxnId>" + SecurityElement.Escape(litleTxnId) + "</litleTxnId>";
+            xml += "\n</refundReversal>";
             return xml;
         }
     }
@@ -376,15 +376,15 @@ namespace Litle.Sdk
 
         public override string Serialize()
         {
-            string xml = "\r\n<activateReversal";
+            string xml = "\n<activateReversal";
             xml += " id=\"" + SecurityElement.Escape(id) + "\"";
             if (customerId != null)
             {
                 xml += " customerId=\"" + SecurityElement.Escape(customerId) + "\"";
             }
             xml += " reportGroup=\"" + SecurityElement.Escape(reportGroup) + "\">";
-            xml += "\r\n<litleTxnId>" + SecurityElement.Escape(litleTxnId) + "</litleTxnId>";
-            xml += "\r\n</activateReversal>";
+            xml += "\n<litleTxnId>" + SecurityElement.Escape(litleTxnId) + "</litleTxnId>";
+            xml += "\n</activateReversal>";
             return xml;
         }
     }
@@ -396,15 +396,15 @@ namespace Litle.Sdk
 
         public override string Serialize()
         {
-            string xml = "\r\n<deactivateReversal";
+            string xml = "\n<deactivateReversal";
             xml += " id=\"" + SecurityElement.Escape(id) + "\"";
             if (customerId != null)
             {
                 xml += " customerId=\"" + SecurityElement.Escape(customerId) + "\"";
             }
             xml += " reportGroup=\"" + SecurityElement.Escape(reportGroup) + "\">";
-            xml += "\r\n<litleTxnId>" + SecurityElement.Escape(litleTxnId) + "</litleTxnId>";
-            xml += "\r\n</deactivateReversal>";
+            xml += "\n<litleTxnId>" + SecurityElement.Escape(litleTxnId) + "</litleTxnId>";
+            xml += "\n</deactivateReversal>";
             return xml;
         }
     }
@@ -416,15 +416,15 @@ namespace Litle.Sdk
 
         public override string Serialize()
         {
-            string xml = "\r\n<loadReversal";
+            string xml = "\n<loadReversal";
             xml += " id=\"" + SecurityElement.Escape(id) + "\"";
             if (customerId != null)
             {
                 xml += " customerId=\"" + SecurityElement.Escape(customerId) + "\"";
             }
             xml += " reportGroup=\"" + SecurityElement.Escape(reportGroup) + "\">";
-            xml += "\r\n<litleTxnId>" + SecurityElement.Escape(litleTxnId) + "</litleTxnId>";
-            xml += "\r\n</loadReversal>";
+            xml += "\n<litleTxnId>" + SecurityElement.Escape(litleTxnId) + "</litleTxnId>";
+            xml += "\n</loadReversal>";
             return xml;
         }
     }
@@ -436,15 +436,15 @@ namespace Litle.Sdk
 
         public override string Serialize()
         {
-            string xml = "\r\n<unloadReversal";
+            string xml = "\n<unloadReversal";
             xml += " id=\"" + SecurityElement.Escape(id) + "\"";
             if (customerId != null)
             {
                 xml += " customerId=\"" + SecurityElement.Escape(customerId) + "\"";
             }
             xml += " reportGroup=\"" + SecurityElement.Escape(reportGroup) + "\">";
-            xml += "\r\n<litleTxnId>" + SecurityElement.Escape(litleTxnId) + "</litleTxnId>";
-            xml += "\r\n</unloadReversal>";
+            xml += "\n<litleTxnId>" + SecurityElement.Escape(litleTxnId) + "</litleTxnId>";
+            xml += "\n</unloadReversal>";
             return xml;
         }
     }
@@ -461,19 +461,19 @@ namespace Litle.Sdk
         public override string Serialize()
         {
 
-            var xml = "\r\n<queryTransaction";
+            var xml = "\n<queryTransaction";
             xml += " id=\"" + SecurityElement.Escape(id) + "\"";
             if (customerId != null)
             {
                 xml += " customerId=\"" + SecurityElement.Escape(customerId) + "\"";
             }
             xml += " reportGroup=\"" + SecurityElement.Escape(reportGroup) + "\">";
-            xml += "\r\n<origId>" + SecurityElement.Escape(origId) + "</origId>";
-            xml += "\r\n<origActionType>" + origActionType + "</origActionType>";
-            if (origLitleTxnId != 0) xml += "\r\n<origLitleTxnId>" + origLitleTxnId + "</origLitleTxnId>";
-            if (origOrderId != null) xml += "\r\n<origOrderId>" + SecurityElement.Escape(origOrderId) + "</origOrderId>";
-            if (origAccountNumber != null) xml += "\r\n<origAccountNumber>" + SecurityElement.Escape(origAccountNumber) + "</origAccountNumber>";
-            xml += "\r\n</queryTransaction>";
+            xml += "\n<origId>" + SecurityElement.Escape(origId) + "</origId>";
+            xml += "\n<origActionType>" + origActionType + "</origActionType>";
+            if (origLitleTxnId != 0) xml += "\n<origLitleTxnId>" + origLitleTxnId + "</origLitleTxnId>";
+            if (origOrderId != null) xml += "\n<origOrderId>" + SecurityElement.Escape(origOrderId) + "</origOrderId>";
+            if (origAccountNumber != null) xml += "\n<origAccountNumber>" + SecurityElement.Escape(origAccountNumber) + "</origAccountNumber>";
+            xml += "\n</queryTransaction>";
             return xml;
         }
     }
@@ -568,19 +568,26 @@ namespace Litle.Sdk
         [XmlArrayItem("activateResponse", typeof(activateResponse))]
         [XmlArrayItem("deactivateResponse", typeof(deactivateResponse))]
         [XmlArrayItem("loadResponse", typeof(loadResponse))]
-        [XmlArrayItem("echeckPreNoteSaleResponse", typeof(echeckPreNoteSaleResponse))]
-        [XmlArrayItem("echeckPreNoteCreditResponse", typeof(echeckPreNoteCreditResponse))]
         [XmlArrayItem("unloadResponse", typeof(unloadResponse))]
         [XmlArrayItem("balanceInquiryResponse", typeof(balanceInquiryResponse))]
-        [XmlArrayItem("payFacCreditResponse", typeof(payFacCreditResponse))]
-        [XmlArrayItem("vendorDebitResponse", typeof(vendorDebitResponse))]
-        [XmlArrayItem("reserveDebitResponse", typeof(reserveDebitResponse))]
         [XmlArrayItem("creditResponse", typeof(creditResponse))]
         [XmlArrayItem("forceCaptureResponse", typeof(forceCaptureResponse))]
         [XmlArrayItem("echeckCreditResponse", typeof(echeckCreditResponse))]
         [XmlArrayItem("echeckRedepositResponse", typeof(echeckRedepositResponse))]
         [XmlArrayItem("echeckSalesResponse", typeof(echeckSalesResponse))]
-        [XmlArrayItem("saleResponse", typeof(saleResponse))] 
+        [XmlArrayItem("saleResponse", typeof(saleResponse))]
+        [XmlArrayItem("echeckVerificationResponse", typeof(echeckVerificationResponse))]
+        [XmlArrayItem("voidResponse", typeof(litleOnlineResponseTransactionResponseVoidResponse))]
+        [XmlArrayItem("echeckVoidResponse", typeof(litleOnlineResponseTransactionResponseEcheckVoidResponse))]
+        [XmlArrayItem("refundReversalResponse", typeof(refundReversalResponse))]
+        [XmlArrayItem("depositReversalResponse", typeof(depositReversalResponse))]
+        [XmlArrayItem("activateReversalResponse", typeof(activateReversalResponse))]
+        [XmlArrayItem("deactivateReversalResponse", typeof(deactivateReversalResponse))]
+        [XmlArrayItem("loadReversalResponse", typeof(loadReversalResponse))]
+        [XmlArrayItem("unloadReversalResponse", typeof(unloadReversalResponse))]
+        [XmlArrayItem("queryTransactionResponse", typeof(queryTransactionResponse))]
+        [XmlArrayItem("queryTransactionUnavailableResponse", typeof(queryTransactionUnavailableResponse))]
+        [XmlArrayItem("fraudCheckResponse", typeof(fraudCheckResponse))]
 
         public ArrayList results_max10
         {

@@ -1,0 +1,10 @@
+.git
+.gitignore
+**/bin
+**/obj
+**/*.user
+*.md
+LICENSE
+CHANGELOG
+CONTRIBUTORS
+kit.bat
